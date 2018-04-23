@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <% if account_signed_in? %>
+      <span>Hello, <%= current_account.email %></span>
+      <%= link_to 'Sign_out', destroy_account_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to 'Sign_in', new_account_session_path %>
+      <%= link_to 'Sign up', new_account_registration_path %>
+    <% end %>
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </body>
 </html>
