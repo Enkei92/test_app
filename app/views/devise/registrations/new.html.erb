@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :chose_your_role %><br />
-    <%= f.select :role, collection: Account.without_admin.roles.to_a %>
+    <%= f.select :role, [:vendor, :customer]%>
   </div>
 
   <div class="actions">
