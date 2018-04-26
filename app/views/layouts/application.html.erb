@@ -9,12 +9,13 @@
   </head>
 
   <body>
+    <%= link_to 'Home', root_path %>
     <% if account_signed_in? %>
-      <span>Hello, <%= current_account.email %></span>
+      <span>Hello, <%= current_account.role %> </span>
       <%= link_to 'Sign_out', destroy_account_session_path, :method => :delete %>
     <% else %>
       <%= link_to 'Sign_in', new_account_session_path %>
-      <%= link_to 'Sign up', new_account_registration_path %>
+      <%= link_to 'Sign up', new_account_registration_path %> 
     <% end %>
     <%= yield %>
     <p class="notice"><%= notice %></p>

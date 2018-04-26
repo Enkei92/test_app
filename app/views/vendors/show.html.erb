@@ -1,0 +1,8 @@
+<h1> Profile </h1>
+<p> Name: <%= @vendor.name %></p>
+<p> Age: <%= @vendor.age %></p>	
+<p> City: <%= @vendor.city %></p>
+	
+<div class:'form-group'>
+  <%= link_to 'Edit', edit_vendor_path(@vendor), class: 'btn btn-primary' %> 
+</div>

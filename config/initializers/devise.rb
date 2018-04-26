@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'bc6c36073615e750ac4138bbeffe9efa3ae80d7874aa6ca5866be88caa0b95c609725deffccfc042805b33bf3608294efe97afad60277f57793127e0f5225a65'
+  config.secret_key = 'bc6c36073615e750ac4138bbeffe9efa3ae80d7874aa6ca5866be88caa0b95c609725deffccfc042805b33bf3608294efe97afad60277f57793127e0f5225a65'
   
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -40,14 +40,14 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  config.authentication_keys = [:email, :role]
+  # config.authentication_keys = [:email, :role]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
   # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
-  # config.request_keys = []
+  config.request_keys = []
 
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used

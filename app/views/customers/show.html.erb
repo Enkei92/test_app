@@ -1,0 +1,8 @@
+<h1> Profile </h1>
+<p> Name: <%= @customer.name %></p>
+<p> Age: <%= @customer.age %></p>	
+<p> City: <%= @customer.city %></p>
+	
+<div class:'form-group'>
+  <%= link_to 'Edit', edit_customer_path(@customer), class: 'btn btn-primary' %> 
+</div>

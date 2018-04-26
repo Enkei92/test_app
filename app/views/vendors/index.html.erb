@@ -1,0 +1,8 @@
+<h1> Vendors </h1>
+<% @vendors.each do |vendor| %>
+  <p><%= link_to vendor.name, vendor_path(vendor) %>
+  <%= link_to 'edit', edit_vendor_path(vendor) %>	
+  <%= link_to 'delete', vendor_path(vendor),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></p>
+<% end %>
