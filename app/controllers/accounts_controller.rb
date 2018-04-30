@@ -1,16 +1,9 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[show edit update destroy]
-  before_action :set_status, only: :update
   load_and_authorize_resource
+  before_action :set_status, only: :update
 
   def index
     @accounts = Account.all
-  end
-
-  def edit
-    unless current_account.admin? || @account.status == 'no_letters'
-        redirect_to @account
-    end
   end
 
   def update
@@ -32,10 +25,6 @@ class AccountsController < ApplicationController
 
   def set_status
     @account.status = 'got_letter'
-  end
-
-  def set_account
-    @account = Account.find(params[:id])
   end
 
   def account_params
