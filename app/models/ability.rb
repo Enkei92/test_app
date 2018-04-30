@@ -5,7 +5,9 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     account ||= Account.new # guest user (not logged in)
-      if account.admin?
+      if account.vendor? || account.customer
+        can :manage, Account, id: account.id
+      elsif account.admin?
         can :manage, :all
       else
         can :read, :all

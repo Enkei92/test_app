@@ -1,8 +1,11 @@
 <h1> Profile </h1>
-<p> Name: <%= @account.name %></p>
+<p> Name: <%= @account.first_name %></p>
+<p> Last Name: <%= @account.first_name %></p>
 <p> Age: <%= @account.age %></p>	
 <p> City: <%= @account.city %></p>
-	
-<div class:'form-group'>
-  <%= link_to 'Edit', edit_account_path(@account), class: 'btn btn-primary' %> 
-</div>
+
+<% if current_account.admin? || @account.status == 'no_letters' %>
+  <div class:'form-group'>
+    <%= link_to 'Edit', edit_account_path(@account), class: 'btn btn-primary' %> 
+  </div>
+<% end %>
