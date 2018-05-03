@@ -7,24 +7,26 @@ class AccountsController < ApplicationController
   end
 
   def update
-    if @account.update(account_params)
-      AccountMailer.profile_email(@account).deliver_later
-      AccountMailer.admin_profile_email(@account).deliver_later
-      redirect_to @account
+    if account.update(account_params)
+      AccountMailer.profile_email(account).deliver_later
+      AccountMailer.admin_profile_email(account).deliver_later
+      redirect_to account
     else
       render :edit
     end
   end
 
   def destroy
-    @account.destroy
+    account.destroy
     redirect_to accounts_path
   end
 
   private
 
+  attr_reader :account
+
   def set_status
-    @account.status = 'got_letter'
+    account.status = 'got_letter'
   end
 
   def account_params
