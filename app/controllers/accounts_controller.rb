@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
   end
 
   def update
-    if @account.update_attributes(account_params)
+    if @account.update(account_params)
       AccountMailer.profile_email(@account).deliver_later
       AccountMailer.admin_profile_email(@account).deliver_later
       redirect_to @account

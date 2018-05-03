@@ -8,7 +8,8 @@ class Account < ApplicationRecord
   validates :first_name, presence: true, length: { minimum: 3, maximum: 15 }, on: :update
   validates :last_name, presence: true, length: { minimum: 3, maximum: 15 }, on: :update
   validates :city, presence: true, length: { minimum: 2, maximum: 20 }, on: :update
-  validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 16, less_than_or_equal_to: 99 }, on: :update
+  validates :age, presence: true, numericality:
+    { only_integer: true, greater_than_or_equal_to: 16, less_than_or_equal_to: 99 }, on: :update
   has_one :vendor, dependent: :destroy
   has_one :customer, dependent: :destroy
   after_create :after_create_mail

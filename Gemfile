@@ -53,6 +53,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'reek'
   gem 'rubocop'
   gem 'letter_opener'
 end

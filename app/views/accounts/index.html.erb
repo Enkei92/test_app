@@ -4,7 +4,7 @@
 
 <h2>Admins</h2>
 <% @accounts.admin.each do |account| %>
-  <p> <%= link_to account.first_name + ' ' + account.last_name, account_path(account) %>	
+  <p> <%= link_to account.first_name, account_path(account) %>	
   <%= link_to 'edit', edit_account_path(account) %>	
   <%= link_to 'delete', account_path(account),
               method: :delete,
@@ -13,7 +13,7 @@
 
 <h2>Vendors</h2>
 <% @accounts.vendor.each do |account| %>
-  <p> <%= link_to account.first_name + ' ' + account.last_name, account_path(account) %>	
+  <p> <%= link_to account.first_name, account_path(account) %>	
   <%= link_to 'edit', edit_account_path(account) %>	
   <%= link_to 'delete', account_path(account),
               method: :delete,
@@ -22,7 +22,7 @@
 
 <h2>Customers</h2>
 <% @accounts.customer.each do |account| %>
-  <p><%= link_to account.first_name + ' ' + account.last_name, account_path(account) %>	
+  <p><%= link_to account.first_name, account_path(account) %>	
   <%= link_to 'edit', edit_account_path(account) %>	
   <%= link_to 'delete', account_path(account),
               method: :delete,

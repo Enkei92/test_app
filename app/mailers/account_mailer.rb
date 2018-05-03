@@ -1,12 +1,11 @@
 class AccountMailer < ApplicationMailer
-
   def welcome_email(account)
     @account = account
     mail(to: @account.email, subject: 'Welcome!')
   end
 
   def admin_after_create_email(account)
-  	@account = account
+    @account = account
     mail(to: 'admin123@mail.com', subject: 'New account has been created!')
   end
 
@@ -16,7 +15,7 @@ class AccountMailer < ApplicationMailer
   end
 
   def admin_profile_email(account)
-  	@account = account
+    @account = account
     mail(to: 'admin123@mail.com', subject: 'Profile updated!')
   end
 end
