@@ -4,3 +4,11 @@ IrresponsibleModule:
 exclude_paths:
   - vendor
   - db/migrate
+
+DuplicateMethodCall:
+  exclude:
+  - "Ability"
+
+FeatureEnvy:
+  exclude:
+  - "Ability"  

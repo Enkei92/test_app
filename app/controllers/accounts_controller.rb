@@ -16,6 +16,11 @@ class AccountsController < ApplicationController
     end
   end
 
+  def show
+    @vendor = account.vendor
+    @customer = account.customer
+  end
+
   def destroy
     account.destroy
     redirect_to accounts_path

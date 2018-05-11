@@ -18,7 +18,8 @@
         </ul>
           <div class="container-group">
             <% if account_signed_in? %>
-              <span>Hello, <%= current_account.role %> </span>
+              <span>Hello, <%= current_account.role.capitalize %> </span>
+              <%= link_to 'Profile', current_account %>
               <%= link_to 'Sign out', destroy_account_session_path, :method => :delete, class: 'btn btn-outline-primary' %>
             <% else %>
               <%= link_to 'Sign in', new_account_session_path, class: 'btn btn-outline-primary' %>
