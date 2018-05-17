@@ -15,8 +15,8 @@ class Account < ApplicationRecord
   after_create :after_create_mail
 
   def after_create_mail
-    AccountMailer.welcome_email(self).deliver_later
-    AccountMailer.admin_after_create_email(self).deliver_later
+    AccountMailer.welcome_email(self).deliver_now
+    AccountMailer.admin_after_create_email(self).deliver_now
   end
 
   def self.user_roles

@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.1.1'
 gem 'cancancan'
+gem 'ckeditor', '~> 4.2', '>= 4.2.4'
 gem 'devise'
 gem 'simple_form'
 

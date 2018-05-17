@@ -8,7 +8,16 @@ exclude_paths:
 DuplicateMethodCall:
   exclude:
   - "Ability"
+  - "AccountMailer"
 
 FeatureEnvy:
   exclude:
-  - "Ability"  
+  - "Ability"
+
+InstanceVariableAssumption:
+  exclude:
+  - "AccountMailer"
+
+RepeatedConditional:
+  exclude:
+  - "AccountMailer"  
