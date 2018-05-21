@@ -13,11 +13,3 @@ DuplicateMethodCall:
 FeatureEnvy:
   exclude:
   - "Ability"
-
-InstanceVariableAssumption:
-  exclude:
-  - "AccountMailer"
-
-RepeatedConditional:
-  exclude:
-  - "AccountMailer"  
