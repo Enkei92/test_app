@@ -1,7 +1,7 @@
 <% if @custom_mail.mail_type == 'welcome' || @custom_mail.mail_type == 'admin_after_create' %>
-  <p> You can use variables %&lt;email&gt;s, %&lt;role&gt;s </p>
+  <p> You can use variables <%= CustomMailsController::AFTER_REG %> </p>
 <% else %>
-  <p> You can use variables %&lt;email&gt;s, %&lt;role&gt;s, %&lt;first_name&gt;s, %&lt;last_name&gt;s, %&lt;city&gt;s, %&lt;age&gt;s</p>
+  <p> You can use variables <%= CustomMailsController::AFTER_PROFILE %></p>
 <%end%> 
 <h3><solid> If you want to use HTML tags or those variables, press 'Source'!</solid></h3>
 

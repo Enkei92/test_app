@@ -6,6 +6,7 @@ class Ability
     #
     account ||= Account.new
     can :read, :all
+    cannot :manage, CustomMail
     can :manage, Account, id: account.id if account.no_letters?
     # Abilities for each role
     can :manage, :all if account.admin?

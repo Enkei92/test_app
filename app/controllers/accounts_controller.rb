@@ -8,8 +8,6 @@ class AccountsController < ApplicationController
 
   def update
     if account.update(account_params)
-      AccountMailer.profile_email(account).deliver_now
-      AccountMailer.admin_profile_email(account).deliver_now
       redirect_to account
     else
       render :edit
