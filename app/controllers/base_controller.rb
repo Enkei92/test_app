@@ -22,7 +22,7 @@ class BaseController < ApplicationController
   private
 
   def mails_after_registration
-    AccountMailer.send_mail(model_account, Account::PROFILE_MAIL, model_account.email).deliver_later
-    AccountMailer.send_mail(model_account, Account::PROFILE_MAIL_ADMIN, Account::ADMIN_EMAIL).deliver_later
+    AccountMailer.send_mail(Account::PROFILE_MAIL, model_account.email, model_account).deliver_later
+    AccountMailer.send_mail(Account::PROFILE_MAIL_ADMIN, Account::ADMIN_EMAIL, model_account).deliver_later
   end
 end

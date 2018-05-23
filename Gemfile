@@ -33,7 +33,9 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'cancancan'
 gem 'ckeditor', '~> 4.2', '>= 4.2.4'
 gem 'devise'
+gem 'letter_opener'
 gem 'simple_form'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -57,7 +59,6 @@ group :development do
   gem 'pry-byebug'
   gem 'reek'
   gem 'rubocop'
-  gem 'letter_opener'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
