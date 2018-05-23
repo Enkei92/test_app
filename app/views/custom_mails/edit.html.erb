@@ -1,7 +1,7 @@
 <% if @custom_mail.mail_type == 'welcome' || @custom_mail.mail_type == 'admin_after_create' %>
-  <p> You can use variables <%= CustomMailsController::AFTER_REG %> </p>
+  <p> You can use variables  <%= "$<#{Emails::CustomMailFields::NEW_ACCOUNT_VARIABLES.join('>s, %<')}>s" %> </p>
 <% else %>
-  <p> You can use variables <%= CustomMailsController::AFTER_PROFILE %></p>
+  <p> You can use variables <%= "%<#{Emails::CustomMailFields::FILLED_ACCOUNT_VARIABLES.join('>s, %<')}>s" %> </p>
 <%end%> 
 <h3><solid> If you want to use HTML tags or those variables, press 'Source'!</solid></h3>
 

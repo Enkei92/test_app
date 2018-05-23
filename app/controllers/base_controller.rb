@@ -1,4 +1,6 @@
 class BaseController < ApplicationController
+  delegate :account, to: :model, prefix: true
+
   def create
     model = build_model
     if model.save
@@ -20,11 +22,7 @@ class BaseController < ApplicationController
   private
 
   def mails_after_registration
-    AccountMailer.send_mail(model_account, 'profile', model_account.email).deliver_later
-    AccountMailer.send_mail(model_account, 'profile_admin', Account.admin.first.email).deliver_later
-  end
-
-  def model_account
-    model.account
+    AccountMailer.send_mail(model_account, Account::PROFILE_MAIL, model_account.email).deliver_later
+    AccountMailer.send_mail(model_account, Account::PROFILE_MAIL_ADMIN, Account::ADMIN_EMAIL).deliver_later
   end
 end

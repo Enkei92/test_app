@@ -8,7 +8,6 @@ exclude_paths:
 DuplicateMethodCall:
   exclude:
   - "Ability"
-  - "AccountMailer"
 
 FeatureEnvy:
   exclude:
