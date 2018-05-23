@@ -18,21 +18,19 @@ class Account < ApplicationRecord
   ADMIN_MAIL_AFTER_CREATE = 'admin_after_create'.freeze
   PROFILE_MAIL = 'profile'.freeze
   PROFILE_MAIL_ADMIN = 'profile_admin'.freeze
+  delegate :total_account, to: :typed_model
 
   def after_create_mail
-    AccountMailer.send_mail(self, WELCOME, email).deliver_later
-    AccountMailer.send_mail(self, ADMIN_MAIL_AFTER_CREATE, ADMIN_EMAIL).deliver_later
+    AccountMailer.send_mail(WELCOME, email, self).deliver_later
+    AccountMailer.send_mail(ADMIN_MAIL_AFTER_CREATE, ADMIN_EMAIL, self).deliver_later
   end
 
   def self.user_roles
     Account.roles.except(:admin)
   end
 
-  def total_account
-    if vendor?
-      vendor.total_account
-    elsif customer?
-      customer.total_account
-    end
+  def typed_model
+    return vendor if vendor?
+    customer
   end
 end
