@@ -1,21 +1,13 @@
 class AccountMailer < ApplicationMailer
-  def welcome_email(account)
+  def send_mail(mail_type, reciever, account)
     @account = account
-    mail(to: @account.email, subject: 'Welcome!')
+    @custom_mail = CustomMail.send(mail_type).first
+    return unless custom_mail.enabled_by_admin?
+    mail(to: reciever, subject: custom_mail.subject,
+         content_type: 'html/text', body: Emails::InterpolationContext.new(account, custom_mail).call)
   end
 
-  def admin_after_create_email(account)
-    @account = account
-    mail(to: 'admin123@mail.com', subject: 'New account has been created!')
-  end
+  private
 
-  def profile_email(account)
-    @account = account
-    mail(to: @account.email, subject: 'Profile!')
-  end
-
-  def admin_profile_email(account)
-    @account = account
-    mail(to: 'admin123@mail.com', subject: 'Profile updated!')
-  end
+  attr_reader :account, :custom_mail
 end
