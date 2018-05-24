@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+#Smells of reek:IrresponsibleModule
 class DeviseCreateAccounts < ActiveRecord::Migration[5.1]
   def change
     create_table :accounts do |t|

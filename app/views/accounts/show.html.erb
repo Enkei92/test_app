@@ -9,3 +9,31 @@
     <%= link_to 'Edit', edit_account_path(@account), class: 'btn btn-primary' %> 
   </div>
 <% end %>
+
+<% if @account.vendor? %>
+  <% if @account.vendor.present? %>
+    <p> Account: <%= @account.vendor.total_account %> </p>
+    <p> Sales: <%= @account.vendor.number_of_sales %> </p>
+    <% if @account == current_account || current_account.admin? %>
+      <%= link_to 'Edit bank account', edit_vendor_path(@vendor), class: 'btn btn-primary' %>
+    <% end %>   
+  <% else %>
+    <% if @account == current_account || current_account.admin? %>
+      <%= link_to 'Create Bank account', new_vendor_path(@vendor), class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+<% end %>  
+
+<% if @account.customer? %>
+  <% if @account.customer.present? %>
+    <p> Account: <%= @account.customer.total_account %> </p>
+    <p> Buys: <%= @account.customer.number_of_buys %> </p>
+    <% if @account == current_account || current_account.admin? %>
+      <%= link_to 'Edit bank account', edit_customer_path(@customer), class: 'btn btn-primary' %> 
+    <% end %>  
+  <% else %>
+    <% if @account == current_account || current_account.admin? %>
+      <%= link_to 'Create Bank account', new_customer_path(@customer), class: 'btn btn-primary' %>
+    <% end %>  
+  <% end %>
+<% end %>

@@ -1,5 +1,6 @@
 <% if account_signed_in? %>
   <% if current_account.admin? %>  
     <%= link_to 'Accounts', accounts_path %>
+    <%= link_to 'Mails', custom_mails_path %>
   <% end %>
 <% end %>   

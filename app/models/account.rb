@@ -13,13 +13,24 @@ class Account < ApplicationRecord
   has_one :vendor, dependent: :destroy
   has_one :customer, dependent: :destroy
   after_create :after_create_mail
+  ADMIN_EMAIL = 'admin123@mail.com'.freeze
+  WELCOME = 'welcome'.freeze
+  ADMIN_MAIL_AFTER_CREATE = 'admin_after_create'.freeze
+  PROFILE_MAIL = 'profile'.freeze
+  PROFILE_MAIL_ADMIN = 'profile_admin'.freeze
+  delegate :total_account, to: :typed_model
 
   def after_create_mail
-    AccountMailer.welcome_email(self).deliver_later
-    AccountMailer.admin_after_create_email(self).deliver_later
+    AccountMailer.send_mail(WELCOME, email, self).deliver_later
+    AccountMailer.send_mail(ADMIN_MAIL_AFTER_CREATE, ADMIN_EMAIL, self).deliver_later
   end
 
   def self.user_roles
     Account.roles.except(:admin)
+  end
+
+  def typed_model
+    return vendor if vendor?
+    customer
   end
 end

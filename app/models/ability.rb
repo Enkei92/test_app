@@ -4,15 +4,14 @@ class Ability
   def initialize(account)
     # Define abilities for the passed in user here. For example:
     #
-    account ||= Account.new # guest user (not logged in)
-    if account.admin?
-      can :manage, :all
-    elsif account.no_letters?
-      can :manage, Account, id: account.id
-    else
-      can :read, :all
-    end
-    #
+    account ||= Account.new
+    can :read, :all
+    cannot :manage, CustomMail
+    can :manage, Account, id: account.id if account.no_letters?
+    # Abilities for each role
+    can :manage, :all if account.admin?
+    can :manage, Vendor, account_id: account.id if account.vendor?
+    can :manage, Customer, account_id: account.id if account.customer?
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
