@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+# ruby 2.5.0
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -34,6 +35,7 @@ gem 'cancancan'
 gem 'ckeditor', '~> 4.2', '>= 4.2.4'
 gem 'devise'
 gem 'letter_opener'
+gem 'redis'
 gem 'simple_form'
 
 
