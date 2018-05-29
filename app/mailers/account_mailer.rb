@@ -1,4 +1,5 @@
 class AccountMailer < ApplicationMailer
+  WEEK = 3600 * 7 * 24
   def send_mail(mail_type, reciever, account)
     @account = account
     @custom_mail = CustomMail.send(mail_type).first
@@ -24,7 +25,7 @@ class AccountMailer < ApplicationMailer
 
   def about_error(error)
     return if REDIS_CLIENT.exists(error)
-    REDIS_CLIENT.set(error, nil, ex: 3600 * 7 * 24)
     mail(to: Account::ADMIN_EMAIL, subject: 'Error handled!', content_type: 'html/text')
+    REDIS_CLIENT.set(error, nil, ex: WEEK)
   end
 end
