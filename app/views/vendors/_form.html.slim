@@ -1,0 +1,6 @@
+= form_for @vendor do |f|
+  .form-group
+    = f.text_field :total_account, class: 'form-control'
+  .form-group
+    = f.submit "Save", class: 'btn btn-primary'
+    = link_to "Cancel", :back, class: 'btn btn-outline-primary'

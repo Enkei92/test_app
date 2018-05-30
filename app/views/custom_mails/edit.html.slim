@@ -1,0 +1,23 @@
+- if @custom_mail.mail_type == 'welcome' || @custom_mail.mail_type == 'admin_after_create'
+  p
+    |  You can use variables 
+    = "$<#{Emails::CustomMailFields::NEW_ACCOUNT_VARIABLES.join('>s, %<')}>s"
+- else
+  p
+    |  You can use variables 
+    = "%<#{Emails::CustomMailFields::FILLED_ACCOUNT_VARIABLES.join('>s, %<')}>s"
+h3
+  solid
+    |  If you want to use HTML tags or those variables, press 'Source'!
+= form_for @custom_mail do |f|
+  .form-group
+    = f.label :subject
+    = f.text_field :subject, class: 'form-control'
+  .form-group
+    = f.label :body
+    = f.cktext_area :body, class: 'form-control', ckeditor: { language: 'eng'}, rows: 40, cols: 60
+  .form-group
+    = f.select :mail_type, CustomMail.mail_types.keys
+  .form-group
+    = f.submit "Save", class: 'btn btn-primary'
+    = link_to "Cancel", :back, class: 'btn btn-outline-primary'
