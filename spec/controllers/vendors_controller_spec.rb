@@ -1,7 +1,5 @@
-require 'rails_helper'
-
 describe VendorsController, type: :controller do
-  before(:each) do
+  before do
     @vendor = create(:vendor)
     @admin = create(:admin)
     sign_in @admin
@@ -23,6 +21,11 @@ describe VendorsController, type: :controller do
     it 'assigns the requested custom_mail to @custom_mail' do
       get :edit, params: { id: @vendor.id }
       expect(assigns(:vendor)).to eq(@vendor)
+    end
+
+    it 'has a 200 status code' do
+      get :edit, params: { id: @vendor.id }
+      expect(response).to have_http_status :ok
     end
 
     it 'renders the #edit view' do

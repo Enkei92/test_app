@@ -1,10 +1,9 @@
-require 'rails_helper'
-
 describe CustomersController, type: :controller do
-  before(:each) do
-    @customer = create(:customer)
-    @admin = create(:admin)
-    sign_in @admin
+  let(:customer) { create(:customer) }
+  let(:admin) { create(:admin) }
+
+  before do
+    sign_in admin
   end
 
   describe 'GET new' do
@@ -21,12 +20,17 @@ describe CustomersController, type: :controller do
 
   describe 'GET #edit' do
     it 'assigns the requested custom_mail to @custom_mail' do
-      get :edit, params: { id: @customer.id }
-      expect(assigns(:customer)).to eq(@customer)
+      get :edit, params: { id: customer.id }
+      expect(assigns(:customer)).to eq(customer)
+    end
+
+    it 'has a 200 status code' do
+      get :edit, params: { id: customer.id }
+      expect(response).to have_http_status :ok
     end
 
     it 'renders the #edit view' do
-      get :edit, params: { id: @customer.id }
+      get :edit, params: { id: customer.id }
       expect(response).to render_template(:edit)
     end
   end

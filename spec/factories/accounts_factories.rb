@@ -30,24 +30,4 @@ FactoryBot.define do
     password 'password'
     role 'admin'
   end
-
-  factory :customer, class: Customer do
-    total_account 9900
-  end
-
-  factory :vendor, class: Vendor do
-    total_account 7728
-  end
-
-  factory :new_account_mail, class: CustomMail do
-    subject 'Welcome!'
-    body 'Hi, %<email>s!'
-    mail_type 'welcome'
-  end
-
-  factory :error_mail, class: CustomMail do
-    subject 'Error handled!'
-    body '%<error>s'
-    mail_type 'welcome'
-  end
 end

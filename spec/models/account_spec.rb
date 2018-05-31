@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe Account, type: :model do
   context 'Validations' do
     it { should validate_presence_of(:first_name).on(:update) }

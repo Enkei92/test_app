@@ -1,24 +1,28 @@
 describe Emails::ContextHashGenerator do
-  it 'Then builds hash for just registered account' do
-    account = create(:new_account)
-    keys = Emails::CustomMailFields::NEW_ACCOUNT_VARIABLES
-    variables = Emails::ContextHashGenerator.new(keys, account).call
+  let(:variables) { described_class.new(keys, account).call }
 
-    expect(variables[:email]).to be_present
-    expect(variables[:role]).to be_present
+  describe 'Just registered account' do
+    let(:account) { create(:new_account) }
+    let(:keys) { Emails::CustomMailFields::NEW_ACCOUNT_VARIABLES }
+
+    it 'Then builds hash for just registered account' do
+      expect(variables[:email]).to eq account.email
+      expect(variables[:role]).to eq account.role
+    end
   end
 
-  it 'Then builds hash for filled account' do
-    account = create(:filled_account)
-    keys = Emails::CustomMailFields::FILLED_ACCOUNT_VARIABLES
-    variables = Emails::ContextHashGenerator.new(keys, account).call
+  describe 'Filled account' do
+    let(:account) { create(:filled_account) }
+    let(:keys) { Emails::CustomMailFields::FILLED_ACCOUNT_VARIABLES }
 
-    expect(variables[:email]).to be_present
-    expect(variables[:role]).to be_present
-    expect(variables[:first_name]).to be_present
-    expect(variables[:last_name]).to be_present
-    expect(variables[:city]).to be_present
-    expect(variables[:age]).to be_present
-    expect(variables[:total_account]).to be_present
+    it 'Then builds hash for filled account' do
+      expect(variables[:email]).to eq account.email
+      expect(variables[:role]).to eq account.role
+      expect(variables[:first_name]).to eq account.first_name
+      expect(variables[:last_name]).to eq account.last_name
+      expect(variables[:city]).to eq account.city
+      expect(variables[:age]).to eq account.age
+      expect(variables[:total_account]).to eq account.total_account
+    end
   end
 end
