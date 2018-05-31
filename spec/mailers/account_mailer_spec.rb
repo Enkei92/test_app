@@ -11,11 +11,13 @@ describe AccountMailer, type: :mailer do
   describe 'normal mail' do
     it 'should send an email' do
       subject.deliver
+
       expect(ActionMailer::Base.deliveries.count).to eq 1
     end
 
     it 'renders the headers' do
       subject.deliver
+
       expect(ActionMailer::Base.deliveries.first.to).to eq ['new_account@mail.com']
       expect(ActionMailer::Base.deliveries.first.subject).to eq 'Welcome!'
       expect(ActionMailer::Base.deliveries.first.from).to eq ['from@example.com']
@@ -23,6 +25,7 @@ describe AccountMailer, type: :mailer do
 
     it 'renders the body' do
       subject.deliver
+
       expect(ActionMailer::Base.deliveries.first.body.raw_source).to eql 'Hi, new_account@mail.com!'
     end
   end
@@ -32,6 +35,7 @@ describe AccountMailer, type: :mailer do
 
     it 'renders the headers of mail about error' do
       subject.deliver
+
       expect(ActionMailer::Base.deliveries.first.to).to eq [Account::ADMIN_EMAIL]
       expect(ActionMailer::Base.deliveries.first.subject).to eq 'Error handled!'
       expect(ActionMailer::Base.deliveries.first.from).to eq ['from@example.com']

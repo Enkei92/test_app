@@ -3,7 +3,7 @@ describe Emails::InterpolationContext do
   let(:mail) { create(:new_account_mail) }
   let(:subject) { described_class.new(account, mail).call }
 
-  describe '.new(args*).call' do
+  describe '.call' do
     it 'It interpolatets variables' do
       expect(subject).to eql('Hi, new_account@mail.com!')
     end

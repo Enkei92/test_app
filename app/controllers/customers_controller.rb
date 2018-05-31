@@ -1,5 +1,6 @@
 class CustomersController < BaseController
   load_and_authorize_resource
+  delegate :account, to: :customer, prefix: true
 
   private
 

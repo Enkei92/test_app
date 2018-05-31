@@ -13,8 +13,7 @@ describe Account, type: :model do
 
   describe '.user_roles' do
     it 'returns every possible account role except admin' do
-      possible_roles = described_class.user_roles
-      expect(possible_roles).to eq 'vendor' => 0, 'customer' => 1
+      expect(described_class.user_roles).to eq 'vendor' => 0, 'customer' => 1
     end
   end
 
