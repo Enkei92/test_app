@@ -7,24 +7,18 @@
     p
       = link_to account.first_name, account_path(account)
       = link_to 'edit', edit_account_path(account)
-      = link_to 'delete', account_path(account),
-      -               method: :delete,
-      -               data: { confirm: 'Are you sure?' }
+      = link_to 'delete', account_path(account), method: :delete, data: { confirm: 'Are you sure?' }
   h2
     | Vendors
   - @accounts.vendor.each do |account|
     p
       = link_to account.first_name, account_path(account)
       = link_to 'edit', edit_account_path(account)
-      = link_to 'delete', account_path(account),
-      -               method: :delete,
-      -               data: { confirm: 'Are you sure?' }
+      = link_to 'delete', account_path(account), method: :delete, data: { confirm: 'Are you sure?' }
   h2
     | Customers
   - @accounts.customer.each do |account|
     p
       = link_to account.first_name, account_path(account)
       = link_to 'edit', edit_account_path(account)
-      = link_to 'delete', account_path(account),
-      -               method: :delete,
-      -               data: { confirm: 'Are you sure?' }
+      = link_to 'delete', account_path(account), method: :delete, data: { confirm: 'Are you sure?' }
