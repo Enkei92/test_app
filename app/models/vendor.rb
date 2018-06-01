@@ -1,3 +1,4 @@
 class Vendor < ApplicationRecord
-  belongs_to :account
+  validates :total_account, presence: true
+  belongs_to :account, optional: true
 end

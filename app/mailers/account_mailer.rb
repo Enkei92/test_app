@@ -2,7 +2,7 @@ class AccountMailer < ApplicationMailer
   WEEK = 3600 * 7 * 24
   def send_mail(mail_type, reciever, account)
     @account = account
-    @custom_mail = CustomMail.send(mail_type).first
+    @custom_mail = CustomMail.send(mail_type).last
     return unless custom_mail.enabled_by_admin?
     if body
       mail(to: reciever, subject: custom_mail.subject,

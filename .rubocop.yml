@@ -14,9 +14,15 @@ Style/FrozenStringLiteralComment:
 
 Metrics/LineLength:
   Max: 120
+  Exclude:
+    - 'spec/**/*'
 
 Style/Documentation:
   Enabled: false
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude: 
+    - 'spec/**/*'

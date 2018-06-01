@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title
+      | TestApp
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', Ckeditor.cdn_url ,'data-turbolinks-track': 'reload'
+  body
+    .container
+      nav.navbar.navbar-light.bg-light
+        ul.nav.navbar-nav
+          li.nav-item.active
+            |  <a class="nav-link" href="
+            = root_path
+            | "> Home page 
+        .container-group
+          - if account_signed_in?
+            = link_to 'Profile', current_account
+            = link_to 'Sign out', destroy_account_session_path, :method => :delete, class: 'btn btn-outline-primary'
+          - else
+            = link_to 'Sign in', new_account_session_path, class: 'btn btn-outline-primary'
+            = link_to 'Sign up', new_account_registration_path, class: 'btn btn-outline-primary'
+    .container.main
+      = yield
+      p.notice
+        = notice
+      p.alert
+        = alert

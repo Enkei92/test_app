@@ -1,0 +1,43 @@
+h1
+  |  Profile 
+p
+  |  Name: 
+  = @account.first_name
+p
+  |  Last Name: 
+  = @account.first_name
+p
+  |  Age: 
+  = @account.age
+p
+  |  City: 
+  = @account.city
+- if current_account.admin? || @account.status == 'no_letters'
+  |  <div class:'form-group'> 
+  = link_to 'Edit', edit_account_path(@account), class: 'btn btn-primary'
+- if @account.vendor?
+  - if @account.vendor.present?
+    p
+      |  Account: 
+      = @account.vendor.total_account
+    p
+      |  Sales: 
+      = @account.vendor.number_of_sales
+    - if @account == current_account || current_account.admin?
+      = link_to 'Edit bank account', edit_vendor_path(@vendor), class: 'btn btn-primary'
+  - else
+    - if @account == current_account || current_account.admin?
+      = link_to 'Create Bank account', new_vendor_path(@vendor), class: 'btn btn-primary'
+- if @account.customer?
+  - if @account.customer.present?
+    p
+      |  Account: 
+      = @account.customer.total_account
+    p
+      |  Buys: 
+      = @account.customer.number_of_buys
+    - if @account == current_account || current_account.admin?
+      = link_to 'Edit bank account', edit_customer_path(@customer), class: 'btn btn-primary'
+  - else
+    - if @account == current_account || current_account.admin?
+      = link_to 'Create Bank account', new_customer_path(@customer), class: 'btn btn-primary'

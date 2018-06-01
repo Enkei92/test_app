@@ -6,17 +6,17 @@ class AccountsController < ApplicationController
     @accounts = Account.all
   end
 
+  def show
+    @vendor = account.vendor
+    @customer = account.customer
+  end
+
   def update
     if account.update(account_params)
       redirect_to account
     else
       render :edit
     end
-  end
-
-  def show
-    @vendor = account.vendor
-    @customer = account.customer
   end
 
   def destroy

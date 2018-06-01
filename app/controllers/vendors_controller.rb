@@ -1,5 +1,6 @@
 class VendorsController < BaseController
   load_and_authorize_resource
+  delegate :account, to: :vendor, prefix: true
 
   private
 
