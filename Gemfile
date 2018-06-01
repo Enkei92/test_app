@@ -37,7 +37,7 @@ gem 'devise'
 gem 'letter_opener'
 gem 'redis'
 gem 'simple_form'
-
+gem "slim-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

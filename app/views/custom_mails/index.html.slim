@@ -1,0 +1,9 @@
+| Mails: 
+- @custom_mails.each do |custom_mail|
+  .form-group
+    p
+      = custom_mail.mail_type
+      = link_to 'edit', edit_custom_mail_path(custom_mail)
+    = form_for custom_mail do |f|
+      = f.select :enabled_by_admin, [['Enabled', true], ['Disabled', false]]
+      = f.submit "Save", class: 'btn btn-primary'
